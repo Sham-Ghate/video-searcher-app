@@ -23,22 +23,6 @@ export default function App() {
     fetchVideos();
   }, []);
 
-  // useEffect(() => {
-  // schedule this call (t) after 800ms - (10)
-  // cancel the call with id 10
-  // schedule this call (to) after 800ms - (11)
-  // cancel the call id 11
-  // schedule this call (top) after 800ms - (12)
-  // clearTimeout(debounceTimerId);
-  // if (searchText !== undefined) {
-  //   let timerId = setTimeout(() => {
-  //     fetchVideos(searchText);
-  //   }, 800);
-  //   console.log("Updating debounce timer ", timerId);
-  //   setDebounceTimerId(timerId);
-  // }
-  // }, [searchText]);
-
   useEffect(() => {
     return () => {
       console.log(">cancel ", debounceTimerId);
@@ -61,10 +45,10 @@ export default function App() {
             fetchVideos(e.target.value);
           }, 800);
           setDebounceTimerId(timerId);
-          // let res = await axios.get(
-          //   `https://content-xflix-backend.azurewebsites.net/v1/videos?title=${e.target.value}`
-          // );
-          // setVideos(res.data.videos);
+           let res = await axios.get(
+             `https://content-xflix-backend.azurewebsites.net/v1/videos?title=${e.target.value}`
+           );
+           setVideos(res.data.videos);
         }}
       />
       <Grid container spacing={2}>
